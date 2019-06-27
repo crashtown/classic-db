@@ -1,0 +1,44 @@
+{
+	"extends": ["airbnb", "prettier", "prettier/react"],
+	"plugins": ["prettier", "react-hooks"],
+	"rules": {
+		"import/prefer-default-export": "off",
+		"no-unneeded-ternary": "off",
+		"no-else-return": "off",
+		"object-shorthand": "off",
+		"camelcase": "off",
+		"prefer-promise-reject-errors": "off",
+		"consistent-return": "off",
+		"react/jsx-boolean-value": "off",
+		"react/prefer-stateless-function": "off",
+		"jsx-a11y/label-has-associated-control": "off",
+		"react/require-default-props": "off",
+		"jsx-a11y/label-has-for": "off",
+		"default-case": 0,
+		"no-console": 0,
+		"react/jsx-filename-extension": [
+			1,
+			{
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		],
+		"react/prop-types": 0,
+		"no-underscore-dangle": 0,
+		"import/imports-first": ["error", "absolute-first"],
+		"import/newline-after-import": "error",
+		"no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
+		"import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": 1
+	},
+	"globals": {
+		"window": true,
+		"document": true,
+		"localStorage": true,
+		"FormData": true,
+		"FileReader": true,
+		"Blob": true,
+		"navigator": true
+	},
+	"parser": "babel-eslint"
+}
