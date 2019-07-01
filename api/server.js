@@ -6,7 +6,6 @@ const routes = require("./routes");
 const cors = require("cors");
 
 const port = process.env.SERVER_PORT;
-
 const server = express();
 
 // function timeout(ms) {
@@ -34,6 +33,8 @@ const testDbConnections = async () => {
     .catch(err => {
       console.error('Unable to connect to the World DB database:', err);
     });
+    // Sync Associations as they are created.
+    // await db.world.sync();
 }
 
 const startHttp = () => {

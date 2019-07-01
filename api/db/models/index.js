@@ -1,29 +1,33 @@
 const appConfig = require("../config/app.js");
 const worldConfig = require("../config/world.js");
 const Sequelize = require("sequelize");
-// const fs = require('fs');
-// const path = require('path');
+const fs = require('fs');
+const path = require('path');
+const basename = path.basename(__filename);
+const worldPath = __dirname + "/world";
 
-let db = {};
-// const basename = path.basename(__filename);
+let db = {
+  world: {},
+  app: {},
+};
 const app = new Sequelize(appConfig);
 const world = new Sequelize(worldConfig);
 
 
-// fs.readdirSync(__dirname)
-// 	.filter(file => {
-// 		return file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js";
-// 	})
-// 	.forEach(file => {
-// 		var model = sequelize["import"](path.join(__dirname, file));
-// 		db[model.name] = model;
-// 	});
+fs.readdirSync(worldPath)
+	.filter(file => {
+		return file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js";
+	})
+	.forEach(file => {
+		const model = world["import"](path.join(worldPath, file));
+		db.world[model.name] = model;
+	});
 
-// Object.keys(db).forEach(modelName => {
-// 	if (db[modelName].associate) {
-// 		db[modelName].associate(db);
-// 	}
-// });
+Object.keys(db.world).forEach(modelName => {
+	if (db.world[modelName].associate) {
+		db.world[modelName].associate(db.world);
+	}
+});
 
 db.app = app;
 db.world = world;
