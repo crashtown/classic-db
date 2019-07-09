@@ -4,6 +4,7 @@ const path = require("path");
 const express = require("express");
 const routes = require("./routes");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const port = process.env.SERVER_PORT;
 const server = express();
@@ -38,7 +39,8 @@ const testDbConnections = async () => {
 }
 
 const startHttp = () => {
-	server.use(cors());
+  server.use(cors());
+  server.use(bodyParser.json());
 	server.get("/", (req, res) => {
 		res.sendFile(path.resolve("index.html"));
 	});

@@ -655,6 +655,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: '1'
     }
   }, {
-    tableName: 'item_template'
-  });
+    tableName: 'item_template',
+    timestamps: false
+});
 };
