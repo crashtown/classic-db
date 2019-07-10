@@ -170,7 +170,36 @@ const ItemController = {
         throw new Error('Search failed:' + query + ' ' + error.message);
       });
   },
+  getAllByClassId: async (classId) => {
+    return await db.world
+    .transaction(async (t) => {
+      return await db.world.models.item_template.findAll({
+        where: { 
+          class: classId
+        }
+      }
+      )
+        .then((result) => {
+          return result.map((item => {
+            return({
+              id: item.entry,
+              name: item.name,
+              subClass: item.subclass,
+              quality: item.Quality,
+              requiredLevel: item.RequiredLevel
+            })
+          }))
+        })
+        .catch((error) => {
+          throw new Error(error);
+        });
+    })
+    .catch((error) => {
+      throw new Error('Search failed:' + classId + ' ' + error.message);
+    });
+  }
 }
+
 module.exports = {
   ItemController
 };
