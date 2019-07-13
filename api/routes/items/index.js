@@ -1,5 +1,5 @@
 const items = require('express').Router();
-const { ItemController } = require("../../controllers/item_template");
+const { ItemController } = require("../../controllers/item");
 items.use('/armor', require('./armor'));
 items.use('/consumable', require('./consumable'));
 items.use('/container', require('./container'));

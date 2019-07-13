@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('spell_template', {
+  return sequelize.define('spell', {
     ID: {
       type: DataTypes.INTEGER(4).UNSIGNED,
       allowNull: false,
@@ -880,6 +880,6 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: '0'
     }
   }, {
-    tableName: 'spell_template'
+    tableName: 'spell'
   });
 };

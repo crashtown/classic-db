@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('quest_template', {
+  return sequelize.define('quest', {
     entry: {
       type: DataTypes.INTEGER(8).UNSIGNED,
       allowNull: false,
@@ -630,6 +630,6 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: '0'
     }
   }, {
-    tableName: 'quest_template'
+    tableName: 'quest'
   });
 };

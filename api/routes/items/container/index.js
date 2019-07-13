@@ -1,5 +1,5 @@
 const container = require('express').Router();
-const { ItemController } = require("../../../controllers/item_template");
+const { ItemController } = require("../../../controllers/item");
 // Example http://localhost:4080/v1/items/container
 container.get("/", async (req, res) => {
     console.log("CONTAINER:")

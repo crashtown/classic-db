@@ -26,16 +26,8 @@ const testDbConnections = async () => {
     .catch(err => {
       console.error('Unable to connect to the App DB database:', err);
     });
-    await db.world
-    .authenticate()
-    .then(() => {
-      console.log('Connection has been established to World DB successfully.');
-    })
-    .catch(err => {
-      console.error('Unable to connect to the World DB database:', err);
-    });
     // Sync Associations as they are created.
-    // await db.world.sync();
+    await db.app.sync();
 }
 
 const startHttp = () => {
@@ -56,5 +48,4 @@ const startServer = async () => {
   await testDbConnections();
   await startHttp();
 }
-
 startServer();

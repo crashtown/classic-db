@@ -3,9 +3,9 @@ const db = require('../db/models');
 
 const ItemController = {
   getById: async (itemId) => {
-    return await db.world
+    return await db.app
       .transaction(async (t) => {
-        return await db.world.models.item_template.findOne(
+        return await db.app.models.item.findOne(
           {
             where: {
               entry: itemId,
@@ -141,9 +141,9 @@ const ItemController = {
       });
   },
   getBySearch: async (query) => {
-    return await db.world
+    return await db.app
       .transaction(async (t) => {
-        return await db.world.models.item_template.findAll({
+        return await db.app.models.item.findAll({
           where: {  
             name: {
               [Sequelize.Op.like]: `%${query}%`
@@ -171,9 +171,9 @@ const ItemController = {
       });
   },
   getAllByClassId: async (classId) => {
-    return await db.world
+    return await db.app
     .transaction(async (t) => {
-      return await db.world.models.item_template.findAll({
+      return await db.app.models.item.findAll({
         where: { 
           class: classId
         }
